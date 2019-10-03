@@ -8,6 +8,7 @@ A sample application to demonstrate an SQL injection exploit.
 
 - [Flutter](https://flutter.io)
 - [MobX.dart](https://mobx.pub)
+- [SQLite](https://pub.dev/packages/sqflite)
 
 ## Getting Started
 
@@ -49,3 +50,18 @@ flutter doctor
 
 - VS Code
   - Download latest version of [VS Code][vs-code]
+  
+## Using the App
+
+Once running you can add users to the local ```User``` database by pressing the swapp button found in the upper left corner and signing up a new user. Pressing the info button in the top right corner shows a list of all entries in the database.
+
+After there is a user in the database, you can attempt to sign in with their credentials. The first dialog shows the SQL query that was used, and the second dialog displays the fetched results.
+
+## Hacking the Database
+
+The SQL injection can be done using the password field of the form. Try some of the following commands:
+- ``` ' OR email = 'you_email_here' --```
+- ``` '; DELETE FROM User -- ```
+- ```' OR 1 = 1 LIMIT 1 -- ```
+
+Have Fun!!!
