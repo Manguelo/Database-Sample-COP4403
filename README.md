@@ -20,7 +20,7 @@ To get a local copy up and running follow these simple steps.
 
 ```
 cd ~
-git clone https://github.com/Manguelo/Database-Sample-COP4403.git
+git clone https://github.com/flutter/flutter.git -b beta --depth 1
 ./flutter/bin/flutter --version
 
 # Export the PATH varaible for the flutter cli tool
