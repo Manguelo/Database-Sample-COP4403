@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_database/app_config.dart';
+import 'package:flutter_database/screens/widgets/data_cell.dart' as data;
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class DataPage extends StatefulWidget {
@@ -40,9 +41,7 @@ class DataPageState extends State<StatefulWidget> {
                   shrinkWrap: true,
                   itemCount: items?.length ?? 0,
                   itemBuilder: (context, index) {
-                    return Text(
-                      items[index].toString(),
-                    );
+                    return data.DataCell(item: items[index]);
                   },
                 ),
               ),

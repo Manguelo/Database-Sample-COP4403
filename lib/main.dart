@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Database',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
+        appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: Colors.white)),
         primaryColor: const Color(0xFF02BB9F),
         primaryColorDark: const Color(0xFF167F67),
         accentColor: const Color(0xFFFFAD32),

@@ -4,7 +4,21 @@ import 'package:flutter_database/app_config.dart';
 import 'package:flutter_database/widgets/login_button.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class LoginDialog extends StatelessWidget {
+class LoginDialog extends StatefulWidget {
+  @override
+  LoginDialogState createState() => LoginDialogState();
+}
+
+class LoginDialogState extends State<StatefulWidget> {
+  TextEditingController cntrlEmail;
+  TextEditingController cntrlPass;
+  @override
+  void initState() {
+    cntrlEmail = TextEditingController();
+    cntrlPass = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final store = AppConfig.of(context).rootStore.databaseStore;
@@ -26,6 +40,7 @@ class LoginDialog extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: TextFormField(
+                controller: cntrlEmail,
                 decoration: InputDecoration(
                   hintText: 'Email',
                 ),
@@ -35,6 +50,7 @@ class LoginDialog extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: TextFormField(
+                controller: cntrlPass,
                 decoration: InputDecoration(
                   hintText: 'Password',
                 ),
@@ -44,7 +60,18 @@ class LoginDialog extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(30, 40, 30, 5),
               child: InkWell(
-                onTap: () => store.mainButtonAction(),
+                onTap: () {
+                  store.mainButtonAction();
+
+                  if (store.isSignup) {
+                    cntrlEmail.clear();
+                    cntrlPass.clear();
+                    store.result = '';
+                    store.query = '';
+                    store.email = '';
+                    store.password = '';
+                  }
+                },
                 child: LoginButton(
                   text: store.isSignup ? 'Create Account' : 'Login',
                 ),

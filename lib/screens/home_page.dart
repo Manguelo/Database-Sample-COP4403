@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(25),
+                  padding: const EdgeInsets.all(35),
                   child: Card(
                     elevation: 4,
                     child: Padding(
@@ -57,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.all(25)),
                 ResultPane(
                   header: 'Query',
                   body: query,
