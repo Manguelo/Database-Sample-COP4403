@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_database/app_config.dart';
 import 'package:flutter_database/screens/data_page.dart';
+import 'package:flutter_database/screens/login_page.dart';
+import 'package:flutter_database/screens/shop_page.dart';
 import 'package:flutter_database/widgets/login_dialog.dart';
 import 'package:flutter_database/widgets/result_dialog.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -19,59 +21,34 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.indigoAccent,
         title: Text(
-          'Hack Me... You Won\'t',
+          'Choose an Example',
           style: TextStyle(color: Colors.white),
         ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.swap_horiz,
-            color: Colors.white,
-          ),
-          onPressed: () => store.switchMode(),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.info,
-              color: Colors.white,
-            ),
-            onPressed: () async => await Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => DataPage())),
-          )
-        ],
       ),
-      body: SingleChildScrollView(
-        child: Observer(
-          builder: (_) {
-            final query = store.query;
-            final result = store.result;
-            return Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(35),
-                  child: Card(
-                    elevation: 4,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: LoginDialog(),
-                    ),
-                  ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: RaisedButton(
+              child: Text('Login Example'),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => LoginPage(),
                 ),
-                ResultPane(
-                  header: 'Query',
-                  body: query,
-                  color: Colors.amber,
+              ),
+            ),
+          ),
+          Center(
+            child: RaisedButton(
+              child: Text('Shop Example'),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ShopPage(),
                 ),
-                Padding(padding: EdgeInsets.all(10)),
-                ResultPane(
-                  header: 'Results',
-                  body: result,
-                  color: Colors.indigoAccent,
-                ),
-              ],
-            );
-          },
-        ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
